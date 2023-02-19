@@ -1,4 +1,4 @@
-## Communication
+# Communication Repository
 Communication within embedded circuits and devices is an efficient method to exchange data. The communication protocols like I2C and SPI, UART use a physical circuit... Let's have some fun...
 
 ## Testing Platform
