@@ -17,5 +17,5 @@ Communication within embedded circuits and devices is an efficient method to exc
 
 ## Disclaimer and Terms
 
-Please follow the ***Disclaimer*** and ***Terms*** in the ***Simplified-Joystick-Arduino Uno-L298N*** Repository.
+Please follow the ***Disclaimer*** and ***Terms*** in the ***Communication*** Repository.
    
