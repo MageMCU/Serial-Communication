@@ -5,7 +5,7 @@
 // Purpose: Public Github Account - MageMCU
 // Repository: Communication 
 // Date Created: 20230219
-// Folder: I2C Bus
+// Folder: Digital Signals
 //
 // Author: Jesse Carpenter (carpentersoftware.com)
 // Email:carpenterhesse@gmail.com
@@ -16,17 +16,19 @@
 //  * VSCode Extension: Microsoft C/C++ IntelliSense, debugging, and code browsing.
 //  * VSCode Extension:PlatformIO
 // 
-// Revised Header-Comment 20230219
-//
 // MIT LICENSE
 //
 
-#include "Arduino.h"
+#include <Arduino.h>
+#include <Wire.h>
 
-#include "BusI2C.h"
+// Common utility functions.
+#include "TESTS/Common.h"
+#include "TESTS/TestBusI2C.h"
+#include "TESTS/TestPWM.h"
 
 // Global Varibles
-bus::BusI2C<float> scanAddressI2C;
+dsg::BusI2C<float> scanAddressI2C;
 
 void setup()
 {
@@ -38,11 +40,8 @@ void setup()
     // Arduino I2C init
     Wire.begin();
 
-    // Intialize BusI2C
-    scanAddressI2C = bus::BusI2C<float>();
-    // Address for the Honeywell HMC5883L: 0x1E
-    // Purpose whether this device can be detected???
-    Serial.println(scanAddressI2C.IsDevice(0x1E));
+    // Test each method in each class
+    // Pending
 }
 
 void loop()

@@ -5,7 +5,7 @@
 // Purpose: Public Github Account - MageMCU
 // Repository: Communication 
 // Date Created: 20230219
-// Folder: I2C Bus
+// Folder: Digital Signals
 //
 // Author: Jesse Carpenter (carpentersoftware.com)
 // Email:carpenterhesse@gmail.com
@@ -15,8 +15,6 @@
 //  * Editor: VSCode
 //  * VSCode Extension: Microsoft C/C++ IntelliSense, debugging, and code browsing.
 //  * VSCode Extension:PlatformIO
-// 
-// Revised Header-Comment 20230219
 //
 // MIT LICENSE
 //
@@ -25,10 +23,10 @@
 #ifndef BUS_I2C_h
 #define BUS_I2C_h
 
-#include "Arduino.h"
-#include "Wire.h"
+#include <Arduino.h>
+#include <Wire.h>
 
-namespace bus
+namespace dsg
 {
     template <typename real>
     class BusI2C

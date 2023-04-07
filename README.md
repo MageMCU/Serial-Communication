@@ -1,5 +1,5 @@
 # Communication Repository
-Communication within embedded circuits and devices is an efficient method to exchange data. The communication protocols like I2C and SPI, UART use a physical circuit... Let's have some fun...
+Communication within embedded circuits and devices is an efficient method to exchange data. The communication protocols like I2C and SPI, UART use a physical circuit... Other digital signals considered include Pulse Width Modulation (PWM)...
 
 ## Testing Platform
 
@@ -12,6 +12,8 @@ Communication within embedded circuits and devices is an efficient method to exc
 ## Issues
 
 ## In Development
+
+- Changes... and more changes 20230407 - Removed unused folders...
 
 ## NOTICE
 
