@@ -4,11 +4,14 @@
 
 ## ***include folder***
 
-- **HMC5883L.h** (Use to acknowledge device address. Simple device test on the I2C bus...)
+- **HMC5883L.h** (using I2C address 0x1E)
 
 ## ***src folder***
 
-- main.cpp
+- Calibration
+    - main.cpp
+- Compass
+    - main.cpp
 
 ## ***root folder***
 

@@ -17,6 +17,7 @@
         - Honeywell
             - Device: Parallax HMC5883L ()
             - Code: Individual
+            - **20230411** testing with offsets and magnetic declination - *surprisingly good results* - more testing required... Carpenter Software.
     - **LIS2MDL**  communication ***I2C Address 0x1E***
         - STMicroelectronics
             - Device: Adafruit LIS2MDL Triple Axis Magnetometer
