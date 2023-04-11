@@ -36,11 +36,11 @@
 
 ## In Development
 
-- 20230410
+- 20230411
 
 ## NOTICE
 
-- Please read notes... The **Communication** repository has consolidated other repositories:
+- Please read notes... The **Communication** repository has consolidated other repositories which has included the those deleted below:
     - **HMC5883L** repository deleted...
     - **LSM303** repository deleted...
     - **Servomotor** repository deleted...

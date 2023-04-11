@@ -1,6 +1,7 @@
 # HMC5883L
 
-## ***Folders***
+## ***Source Code Folders***
 
-- Arduino-HMC5883L
+- **Arduino-HMC5883L** 
+    - by Korneliusz Jarzębski
 
