@@ -47,7 +47,7 @@
 
 ## Disclaimer and Terms
 
-- The Devices and Sensors folders might **not** contain MIT LICENSE. Please read through all third-party material at their Github website for thier LICNESE. The citations are listed within this Communication repository.
+- The Devices and Sensors folders might **not** contain MIT LICENSE. Please read through all third-party material at their Github website for thier LICENSE. The citations are listed within this Communication repository.
 
 - Please follow the ***Disclaimer*** and ***Terms*** in the ***Communication*** Repository.
    
