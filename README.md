@@ -1,5 +1,26 @@
 # Communication Repository
-Communication within embedded circuits and devices is an efficient method to exchange data. The communication protocols like I2C and SPI, UART use a physical circuit... Other digital signals considered include Pulse Width Modulation (PWM)...
+
+- Communication within embedded circuits and devices is an efficient method to exchange data. The communication protocols like I2C and SPI, UART use a physical circuit... Other digital signals considered include Pulse Width Modulation (PWM)...
+
+## Devices ##
+
+- PWM
+    - **PCA9685** communication ***I2C Address 0x40***
+        - NXP Semiconductors
+            - Device: Adafruit PCA9685 16-Channel Servo Driver
+            - Code: Adafruit Industries
+
+## Sensors ##
+
+- Magnetometers
+    - **HMC5883L** communication ***I2C Address 0x1E***
+        - Honeywell
+            - Device: Parallex HMC5883L 
+            - Code: Individual
+    - **LIS2MDL**  communication ***I2C Address 0x1E***
+        - STMicroelectronics
+            - Device: Adafruit LIS2MDL Triple Axis Magnetometer
+            - Code: Adafruit Industries
 
 ## Testing Platform
 
@@ -11,13 +32,22 @@ Communication within embedded circuits and devices is an efficient method to exc
 
 ## Issues
 
+- None
+
 ## In Development
 
-- Changes... and more changes 20230407 - Removed unused folders...
+- 20230410
 
 ## NOTICE
 
+- Please read notes... The **Communication** repository has consolidated other repositories:
+    - **HMC5883L** repository deleted...
+    - **LSM303** repository deleted...
+    - **Servomotor** repository deleted...
+
 ## Disclaimer and Terms
 
-Please follow the ***Disclaimer*** and ***Terms*** in the ***Communication*** Repository.
+- The Devices and Sensors folders might **not** contain MIT LICENSE. Please read through all third-party material at their Github website for thier LICNESE. The citations are listed within this Communication repository.
+
+- Please follow the ***Disclaimer*** and ***Terms*** in the ***Communication*** Repository.
    
