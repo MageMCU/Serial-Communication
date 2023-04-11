@@ -15,7 +15,7 @@
 - Magnetometers
     - **HMC5883L** communication ***I2C Address 0x1E***
         - Honeywell
-            - Device: Parallex HMC5883L 
+            - Device: Parallax HMC5883L ()
             - Code: Individual
     - **LIS2MDL**  communication ***I2C Address 0x1E***
         - STMicroelectronics
