@@ -17,7 +17,7 @@
             - (file located at the Numerics repository)
     - **Example Code** Visit Github website...
 ## Note
-- The code implementation from the sources is part of the header file. There is no cpp-file. Therefore the altered hearder files are located here under their appropriate folders.
+- The code implementation from the sources is part of the header file. There is no cpp-file. Therefore the altered header files are located here under their appropriate folders.
 - The code from the sources seems to perform well enough until further testing. 
 - The number of devices used will increase... Enjoy!
 
