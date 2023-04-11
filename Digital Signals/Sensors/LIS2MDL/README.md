@@ -1,5 +1,5 @@
 # Adafruit_LIS2MDL
-- namespace **ada**
+- namespace ada
 ## ***include folder***
 - **Adafruit_LIS2MDL.h** 
     - There are dependencies... See README.md in previous folder...
