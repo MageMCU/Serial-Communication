@@ -22,7 +22,7 @@
     - **HMC5883L** communication ***I2C Address 0x1E***
         - Honeywell
             - Device: Parallax HMC5883L ()
-            - Code: Individual
+            - Code: Individual (see citations)
                 - **20230411** Code **PASSED** the Magnetometer Accuracy Test when using the *offsets* and *magnetic declination*. Tested by Carpenter Software.
     - **LIS2MDL**  communication ***I2C Address 0x1E***
         - STMicroelectronics
