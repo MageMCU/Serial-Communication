@@ -17,17 +17,18 @@
         - Honeywell
             - Device: Parallax HMC5883L ()
             - Code: Individual
-            - **20230411** testing with offsets and magnetic declination - *surprisingly good results* - more testing required... Carpenter Software.
+                - **20230411** **PASSED** the Magnetometer Accuracy Test when using the *offsets* and *magnetic declination*. Tested by Carpenter Software.
     - **LIS2MDL**  communication ***I2C Address 0x1E***
         - STMicroelectronics
             - Device: Adafruit LIS2MDL Triple Axis Magnetometer
             - Code: Adafruit Industries
-    - **Test**
-        - A **quick-test** method for the magnetometer. The *heading* (reading) is performed on the xy-plane on a electronic magnetometer. 
-            - (1) **Test** whether the electronic compass aligns with the Earth's Magnetic North giving a *heading* of zero or 360 degrees where the results may rock back and forth between these values....
-            - (2) Rotate the electronic compass around 180 degrees (or pi radians) from its initial orientation. The result between the two points 180 degrees apart should align exactly on their oposite sides.  **Test** whether the *heading* is reading about the same of 180 degrees (or pi radians)...
-        - To clarify, the heading is defined by taking the arc-tangent of the xy-plane of the magnetometer... The testing **FAILS** if the orientations do not align exactly on their opposite sides while rotating the magnetometer to the assigned readings of zero and 180 degrees. In other words, the relative readings should match the two points. The **difference** of the physical orientation between angle-1 and angle-2 should match exactly to the **difference** of heading-1 and heading-2.
-            - Thus the **difference** = (angle-2 - angle-1) = (heading-2 - heading-1).
+                - **20230411** **FAILED** the Magnetometer Accuracy Test. The calibration code and its use with the compass code was not incorporated... It was not clear whether offsets were needed... Tested by Carpenter Software. 
+    - **Magnetometer Accuracy Test**
+        - The *heading* (reading) is performed on the xy-plane while rotating the magnetometer. 
+            - (1) **Test** whether the electronic compass aligns with the Earth's Magnetic North giving a *heading* of zero or 360 degrees where the results may rock back and forth between these values.... Use your smart phone to display the Earth's Magnetic North (*Disable True North*).
+            - (2) Rotate the electronic compass around 180 degrees (or pi radians) from its initial orientation of zero degrees. The result at each point at 180 degrees apart (points on a striaght line) should match the headings.  **Test** whether the *heading* is reading about the same result of 180 degrees (or pi radians)...
+        - To clarify, the heading is defined by taking the arc-tangent(y, x) of the xy-plane of the magnetometer... The testing **FAILS** if the orientations do not align exactly on their opposite sides while rotating the magnetometer to the assigned readings of zero and 180 degrees. In other words, the relative readings should match the physical oriention of the two points. The **difference** of the **physical** orientations between *angle-1* and *angle-2* should match exactly to the **difference** readings of *heading-1* and *heading-2*. 
+            - Thus the **difference** = (*angle-2* **-** *angle-1*) = (*heading-2* **-** *heading-1*). The importance of understanding how to apply the physical angles to the magnetometer's readings is key.
 
 ## Testing Platform
 
