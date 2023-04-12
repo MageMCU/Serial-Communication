@@ -28,7 +28,7 @@
         - STMicroelectronics
             - Device: Adafruit LIS2MDL Triple Axis Magnetometer
             - Code: Adafruit Industries
-                - **20230411** Code **FAILED** the Magnetometer Accuracy Test. The calibration code and its use with the compass code was not incorporated... It was not clear whether offsets were needed... Tested by Carpenter Software. 
+                - **20230411** Code **FAILED** the Magnetometer Accuracy Test. There was no indication how to use the calibration code with the compass code... It was not clear whether the *offsets* and the *magnetic declination* were needed in the compass code... Tested by Carpenter Software. 
     - **Magnetometer Accuracy Test**
         - The *heading* (reading) is performed on the xy-plane while rotating the magnetometer. 
             - (1) **Test** whether the electronic compass aligns with the Earth's Magnetic North giving a *heading* of zero or 360 degrees where the results may rock back and forth between these values.... Use your smart phone to display the Earth's Magnetic North (*Disable True North*).
