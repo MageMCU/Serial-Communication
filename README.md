@@ -26,7 +26,8 @@
         - A **quick-test** method for the magnetometer. The *heading* (reading) is performed on the xy-plane on a electronic magnetometer. 
             - (1) **Test** whether the electronic compass aligns with the Earth's Magnetic North giving a *heading* of zero or 360 degrees where the results may rock back and forth between these values....
             - (2) Rotate the electronic compass around 180 degrees (or pi radians) from its initial orientation. The result between the two points 180 degrees apart should align exactly on their oposite sides.  **Test** whether the *heading* is reading about the same of 180 degrees (or pi radians)...
-        - To clarify, the heading is defined by taking the arc-tangent of the xy-plane of the magnetometer... The testing **FAILS** if the orientations do not align exactly on their opposite sides while rotating the magnetometer to the assigned readings of zero and 180 degrees. In other words, the relative readings should match the two points. The **difference** of the physical orientation between angle-1 and angle-2 should match exactly to the **difference** of heading-1 and heading-2. Thus the **difference** = (angle-2 - angle-1) = (heading-2 - heading-1).
+        - To clarify, the heading is defined by taking the arc-tangent of the xy-plane of the magnetometer... The testing **FAILS** if the orientations do not align exactly on their opposite sides while rotating the magnetometer to the assigned readings of zero and 180 degrees. In other words, the relative readings should match the two points. The **difference** of the physical orientation between angle-1 and angle-2 should match exactly to the **difference** of heading-1 and heading-2. 
+            - Thus the **difference** = (angle-2 - angle-1) = (heading-2 - heading-1).
 
 ## Testing Platform
 
