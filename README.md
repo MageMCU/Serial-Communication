@@ -17,12 +17,12 @@
         - Honeywell
             - Device: Parallax HMC5883L ()
             - Code: Individual
-                - **20230411** **PASSED** the Magnetometer Accuracy Test when using the *offsets* and *magnetic declination*. Tested by Carpenter Software.
+                - **20230411** Code **PASSED** the Magnetometer Accuracy Test when using the *offsets* and *magnetic declination*. Tested by Carpenter Software.
     - **LIS2MDL**  communication ***I2C Address 0x1E***
         - STMicroelectronics
             - Device: Adafruit LIS2MDL Triple Axis Magnetometer
             - Code: Adafruit Industries
-                - **20230411** **FAILED** the Magnetometer Accuracy Test. The calibration code and its use with the compass code was not incorporated... It was not clear whether offsets were needed... Tested by Carpenter Software. 
+                - **20230411** Code **FAILED** the Magnetometer Accuracy Test. The calibration code and its use with the compass code was not incorporated... It was not clear whether offsets were needed... Tested by Carpenter Software. 
     - **Magnetometer Accuracy Test**
         - The *heading* (reading) is performed on the xy-plane while rotating the magnetometer. 
             - (1) **Test** whether the electronic compass aligns with the Earth's Magnetic North giving a *heading* of zero or 360 degrees where the results may rock back and forth between these values.... Use your smart phone to display the Earth's Magnetic North (*Disable True North*).
