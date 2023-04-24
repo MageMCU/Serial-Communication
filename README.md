@@ -3,7 +3,13 @@
 - Communication within embedded circuits and devices is an efficient method to exchange data. The communication protocols like I2C and SPI, UART use a physical circuit... Other digital signals considered include Pulse Width Modulation (PWM)...
 
 ## Devices ##
-
+- MCU
+    - Master-MCU communication ***I2C Address 0x14***
+        - Arduino Uno 
+            - **20230423** Code working...
+    - Slave-MCU communication ***I2C Address 0x16***
+        - Arduino Uno
+            - **20230423** Code working...
 - PWM
     - **PCA9685** communication ***I2C Address 0x40***
         - NXP Semiconductors

@@ -1,5 +1,12 @@
 # Devices
 ## ***Folders***
+- **MCU** 
+    - **Source:** Carpenter Software, ***MageMCU*** (MIT License)
+         - under development - updated 20230423
+    - Master-MCU communication ***I2C Address 0x14***
+        - Arduino Uno
+    - Slave-MCU communication ***I2C Address 0x16***
+        - Arduino Uno
 - **PCA9685**
     - **Source:** Adafruit Industries, ***Adafruit_PWM_Servo_Driver_Library*** (BSD License) [(Github)](https://github.com/adafruit/Adafruit-PWM-Servo-Driver-Library)
     - **Files** 
@@ -16,8 +23,6 @@
         - **Timer.h**               
             - (file located at the Numerics repository)
     - **Example Code** Visit Github website...
-## Note
-- The code implementation from the sources is part of the header file. There is no cpp-file. Therefore the altered header files are located here under their appropriate folders.
-- The code from the sources seems to perform well enough until further testing. 
-- The number of devices used will increase... Enjoy!
+
+## Notes
 
