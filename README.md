@@ -56,10 +56,11 @@
 
 ## In Development
 
-- 20230411
+- 20230423
 
 ## NOTICE
 
+- MCU Communication (Difficulty Level Intermediate)
 - Please read notes... The **Communication** repository has consolidated other repositories which has included the those deleted below:
     - **HMC5883L** repository deleted...
     - **LSM303** repository deleted...
