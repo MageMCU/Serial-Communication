@@ -5,11 +5,11 @@
 ## Devices ##
 - MCU
     - Master-MCU communication ***I2C Address 0x14***
-        - Arduino Uno 
-            - **20230423** Code working...
+        - Arduino Uno as Master
+            - **20230425** Code working...
     - Slave-MCU communication ***I2C Address 0x16***
-        - Arduino Uno
-            - **20230423** Code working...
+        - Arduino Uno as Slave
+            - **20230425** Code working...
 - PWM
     - **PCA9685** communication ***I2C Address 0x40***
         - NXP Semiconductors

@@ -19,11 +19,11 @@
 // MIT LICENSE
 //
 
-#ifndef BUS_I2C_h
-#define BUS_I2C_h
-
 #include <Arduino.h>
 #include <Wire.h>
+
+#ifndef BUS_I2C_h
+#define BUS_I2C_h
 
 // IN DEVELOMENT ------------------------------- FIXME
 namespace dsg
@@ -37,28 +37,75 @@ namespace dsg
         ~BusI2C() = default;
 
         // Public Methods
+        void Begin(uint8_t address);
+        void Begin(uint8_t address, uint32_t timeout, bool reset);
+        void ClearTimeout();
         String IsDevice(uint8_t deviceAddress);
         String ErrorMsg();
         uint8_t GetErrorNumberI2C();
-        void SetWireTimeout(uint32_t timeout, bool reset);
-        bool IsTimeout();
-        void ClearTimeout();
-        uint8_t RecieveMessage(uint8_t addr, uint8_t msg[], uint8_t size);
+        void ReceiveMessage(uint8_t *pMessage, uint8_t size);
+        uint8_t RequestMessage(uint8_t addr, uint8_t msg[], uint8_t size);
         void TransmitMessage(uint8_t addr, uint8_t msg[], uint8_t size);
         uint8_t RecieveDeviceMessage(uint8_t addr, uint8_t reg, uint8_t msg[], uint8_t size);
 
+        // Experimental - separate from bitwise
+        // Byte Word Operations - Experimental
+        void WordToBytes(uint16_t word);
+        uint8_t GetHiByte();
+        uint8_t GetLoByte();
+        uint16_t BytesToWord();
+        uint16_t BytesToWord(uint8_t hiByte, uint8_t loByte);
+
     private:
-        // Private Property
+        // Private Properties
         uint8_t m_errorI2C;
+        // Experimental - separate from bitwise
+        // Byte - Word Properties
+        // AVR-LSB Word Order bit15, bit14, ... , bit1, bit0.
+        uint16_t b_wordIN;
+        uint16_t b_wordOUT;
+        // AVR-LSB Byte Order bit7, bit6, ... , bit1, bit0.
+        uint8_t b_byteHi;
+        uint8_t b_byteLo;
+
         // Private Methods
+        void m_receive();
         String m_errorMessageI2C();
         void m_scanningI2C(uint8_t deviceAddress);
+        // Byte - Word privatemethods
+        void b_setHiByte();
+        void b_setLoByte();
+        void b_glueBytes();
     };
 
     BusI2C::BusI2C()
     {
         m_errorI2C = 0;
-        Serial.println("BusI2C Contructor");
+        Serial.println("BusI2C Const...");
+    }
+
+    void BusI2C::Begin(uint8_t address)
+    {
+        Wire.begin(address);
+        delay(6);
+    }
+
+    void BusI2C::Begin(uint8_t address, uint32_t timeout, bool reset)
+    {
+        Wire.begin(address);
+        delay(6);
+        // 3 ms timeout
+        Wire.setWireTimeout(timeout, reset);
+    }
+
+    void BusI2C::ClearTimeout()
+    {
+        if (Wire.getWireTimeoutFlag())
+        {
+            Wire.clearWireTimeoutFlag();
+            // Less than timer at 6ms
+            delay(6);
+        }
     }
 
     String BusI2C::IsDevice(uint8_t deviceAddress)
@@ -82,24 +129,17 @@ namespace dsg
         return m_errorI2C;
     }
 
-    void BusI2C::SetWireTimeout(uint32_t timeout, bool reset)
+    void BusI2C::ReceiveMessage(uint8_t *pMessage, uint8_t size)
     {
-        // microseconds 3000us = 3ms = 0.003s
-        // This may be used in setup()
-        Wire.setWireTimeout(timeout, reset);
+        int bufIndex = 0;
+        while (Wire.available())
+        {
+            pMessage[bufIndex] = Wire.read();
+            bufIndex++;
+        };
     }
 
-    bool BusI2C::IsTimeout()
-    {
-        return Wire.getWireTimeoutFlag();
-    }
-
-    void BusI2C::ClearTimeout()
-    {
-        Wire.clearWireTimeoutFlag();
-    }
-
-    uint8_t BusI2C::RecieveMessage(uint8_t addr, uint8_t msg[], uint8_t size)
+    uint8_t BusI2C::RequestMessage(uint8_t addr, uint8_t msg[], uint8_t size)
     {
         int bufIndex = 0;
         Wire.beginTransmission(addr);
@@ -149,6 +189,34 @@ namespace dsg
         return (bufIndex - 1);
     }
 
+    void BusI2C::WordToBytes(uint16_t uint16)
+    {
+        b_wordIN = uint16;
+        b_setHiByte();
+        b_setLoByte();
+    }
+    
+    uint8_t BusI2C::GetHiByte()
+    {
+        return b_byteHi;
+    }
+    
+    uint8_t BusI2C::GetLoByte()
+    {
+        return b_byteLo;
+    }
+    
+    uint16_t BusI2C::BytesToWord()
+    {
+        b_glueBytes();
+        return b_wordOUT;
+    }
+    
+    uint16_t BusI2C::BytesToWord(uint8_t hiByte, uint8_t loByte)
+    {
+        return (uint16_t)((hiByte << 8) | (loByte & 0x00FF));
+    }
+
     String BusI2C::m_errorMessageI2C()
     {
         String message = "";
@@ -191,6 +259,21 @@ namespace dsg
             Wire.beginTransmission(deviceAddress);
             m_errorI2C = Wire.endTransmission();
         }
+    }
+    
+    void BusI2C::b_setHiByte()
+    {
+        b_byteHi = (uint8_t)(b_wordIN >> 8);
+    }
+    
+    void BusI2C::b_setLoByte()
+    {
+        b_byteLo = (uint8_t)(b_wordIN & 0xff);
+    }
+    
+    void BusI2C::b_glueBytes()
+    {
+        b_wordOUT = (uint16_t)((b_byteHi << 8) | (b_byteLo & 0x00FF));
     }
 }
 #endif

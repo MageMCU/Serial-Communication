@@ -3,13 +3,13 @@
 - namespace ***dsg***
 
 ## ***include folder***
-- **Bitwise.h** 
 - **BusI2C.h** 
 - **Button.h**
-- **MCU_Common.h**
-- **MCU_Master.h**
-- **MCU_Slave.h**
+    - file can be located in *Simplified-Joystick-Uno_L298N* repository...
+- **Common.h**
+- **StateMachine.h**
 - **Timer.h**
+    - file can be located in *Numerics* repository
 
 ## ***src folder***
 
@@ -30,4 +30,5 @@
 
 ## ***Notes***
 
+- 20230425 - This can be considered complete as a startup (barebones)...
 - 20230423 - Initial development - work in progress...

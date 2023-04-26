@@ -1,13 +1,33 @@
+//
+// Carpenter Software
+// File: SlaveUno: main.cpp
+//
+// Purpose: Public Github Account - MageMCU
+// Repository: Communication
+// Date Created: 20230425
+// Folder: Digital Signals
+//
+// Author: Jesse Carpenter (carpentersoftware.com)
+// Email:carpenterhesse@gmail.com
+//
+// Testing Platform:
+//  * MCU:Atmega328P
+//  * Editor: VSCode
+//  * VSCode Extension: Microsoft C/C++ IntelliSense, debugging, and code browsing.
+//  * VSCode Extension:PlatformIO
+//
+// MIT LICENSE
+//
 
 #include <Arduino.h>
 #include <Wire.h>
 
-#include "MCU_Common.h"
-#include "MCU_Slave.h"
-
-#include "Bitwise.h"
+#include "Common.h"
+#include "StateMachine.h"
+#include "BusI2C.h"
 #include "Timer.h"
 
+// Arduino Uno as Master communicates with another Arduino as Slave.
 // ----------------------------------------------------
 // CAUTION: platformio.ini ---------------------------- BEWARE
 // MASTER MCU: Change to MasterUno folder
@@ -15,62 +35,36 @@
 // SLAVE MCU: Change to SlaveUno folder
 //             Upload to Slave-MCU
 // ----------------------------------------------------
+// ----------------------------------------------------
+// Note that some Wire call functions reside in both
+// BusI2C.h and main.cpp...
+// ----------------------------------------------------
 
-dsg::MCU_Slave slave;
-nmr::Bitwise<int> util;
+// Global Declartions
+dsg::BusI2C busI2C;
 nmr::Timer loopTimer;
 
-// Global Function Pointer
-void (*pCurrentState)();
-uint8_t stateID;
-int xAnalog;
-int yAnalog;
-
-void Debug()
-{
-    Serial.print("x: ");
-    Serial.print(xAnalog);
-    Serial.print(" y: ");
-    Serial.println(yAnalog);
-}
-
-void ButtonON()
-{
-    Serial.println("bON");
-}
-
-void ButtonOFF()
-{
-    Serial.println("bOFF");
-}
-
+// Callback
 void SlaveReceiveI2C(int numberBytes)
 {
-    uint8_t slaveMessage[numberBytes];
+    uint8_t message[numberBytes];
+    busI2C.ReceiveMessage(message, numberBytes);
 
-    // I2C Receive
-    int cnt = 0;
-    while (Wire.available())
-    {
-        slaveMessage[cnt] = Wire.read();
-        cnt++;
-    }
-
-    // Joystick Neutral Position
+    // Joystick Neutral Position (midpoints)
     xAnalog = 511;
     yAnalog = 511;
 
     // Build the data back to its original values....
-    if (slaveMessage[0] == SLAVE_ADDR_0x16)
+    if (message[0] == SLAVE_ADDR_0x16)
     {
-        stateID = slaveMessage[1];
-        xAnalog = util.BytesToWord(slaveMessage[2], slaveMessage[3]);
-        yAnalog = util.BytesToWord(slaveMessage[4], slaveMessage[5]);
+        stateID = message[1];
+        xAnalog = busI2C.BytesToWord(message[2], message[3]);
+        yAnalog = busI2C.BytesToWord(message[4], message[5]);
 
-        if (stateID == (uint8_t)BUTTON_ON)
-            pCurrentState = ButtonON;
-        else if (stateID == (uint8_t)BUTTON_OFF)
-            pCurrentState = ButtonOFF;
+        // Call State Machine
+        // Buttoin-ON - Button-OFF
+        // where stateID used to transition....
+        StateMachine();
     }
 }
 
@@ -81,11 +75,10 @@ void setup()
     {
     }
 
-    // I2C
-    Wire.begin(SLAVE_ADDR_0x16);
-    delay(100);
-    // 3 ms timeout
-    Wire.setWireTimeout(3000 /* us */, true /* reset_on_timeout */);
+    // Assign BusI2C Object
+    busI2C = dsg::BusI2C();
+    // Wire.BEGIN: Include Timeout
+    busI2C.Begin(SLAVE_ADDR_0x16, 3000, true);
 
     // State Machine
     pCurrentState = nullptr;
@@ -93,23 +86,12 @@ void setup()
 
 void loop()
 {
-    if (loopTimer.isTimer(100))
+    if (loopTimer.isTimer(250))
     {
+        // I2C RECEIVE
         Wire.onReceive(SlaveReceiveI2C);
-
-        // Remember Master also has debug
-        // so turn one off... Or fix the
-        // out for readability...
-        Debug();
-        //
-        if (pCurrentState)
-            pCurrentState();
     }
 
-    if (Wire.getWireTimeoutFlag())
-    {
-        // Less than timer at 6ms
-        delay(6);
-        Wire.clearWireTimeoutFlag();
-    }
+    // Prevent hiccups (stalls)
+    busI2C.ClearTimeout();
 }
