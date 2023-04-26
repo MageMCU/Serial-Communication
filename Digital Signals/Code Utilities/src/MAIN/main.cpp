@@ -27,9 +27,6 @@
 #include "TESTS/TestBusI2C.h"
 #include "TESTS/TestPWM.h"
 
-// Global Varibles
-dsg::BusI2C<float> scanAddressI2C;
-
 void setup()
 {
     // Debug
@@ -37,13 +34,15 @@ void setup()
     while (!Serial)
     {
     }
-    // Arduino I2C init
-    Wire.begin();
 
     // Test each method in each class
-    // Pending
+    // PWM Tests
+    PWM_Setup();
+
 }
 
 void loop()
 {
+    // BusI2C_Loop(); // Pending 
+    PWM_Loop();
 }

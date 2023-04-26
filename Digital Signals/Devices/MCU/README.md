@@ -4,6 +4,7 @@
 
 ## ***include folder***
 - **BusI2C.h** 
+    - file can be located in this repository in the **Code Utilities** folder...
 - **Button.h**
     - file can be located in *Simplified-Joystick-Uno_L298N* repository...
 - **Common.h**

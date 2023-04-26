@@ -64,6 +64,7 @@ namespace dsg
     template <typename real>
     PWM<real>::PWM(uint8_t inputPin)
     {
+        // Used for pusleIn()
         m_inputPin = inputPin;
     }
 
@@ -119,10 +120,19 @@ namespace dsg
     template <typename real>
     void PWM<real>::m_calculate()
     {
+        // microseconds (us)
         m_onCycle = pulseIn(m_inputPin, HIGH);
+
+        // microseconds (us)
         m_offCycle = pulseIn(m_inputPin, LOW);
+
+        // Period (T)=(Time per Cycle)=(us)
         m_period = abs(m_onCycle + m_offCycle);
+
+        // Hz (Cycles per Time)=(cycles per seconds)
         m_frequency = 0;
+
+        // no units (cancel)
         m_dutyCycle = 0.0;
         if (m_period > 0.0)
         {
