@@ -6,10 +6,9 @@
 
 **Following classes are stand-alone**
 - **BusI2C.h** 
-    - Test pending... 
-    - Used for MCU I2C Commuunication...
+    - Used for MCU I2C Commuunication... Byte Word Operations tested... Under development...
 - **PWM.h** 
-    - Tests completed...
+    - Tests completed... Requires Arduino's loop() function...
 - **Timer.h**
     - file can be located in the *Numerics* repository.
 
@@ -30,5 +29,5 @@
 
 ## ***Notes***
 
-- Having fun...
+- Working 20230427
 

@@ -47,9 +47,6 @@ namespace dsg
         uint8_t RequestMessage(uint8_t addr, uint8_t msg[], uint8_t size);
         void TransmitMessage(uint8_t addr, uint8_t msg[], uint8_t size);
         uint8_t RecieveDeviceMessage(uint8_t addr, uint8_t reg, uint8_t msg[], uint8_t size);
-
-        // Experimental - separate from bitwise
-        // Byte Word Operations - Experimental
         void WordToBytes(uint16_t word);
         uint8_t GetHiByte();
         uint8_t GetLoByte();
@@ -59,8 +56,6 @@ namespace dsg
     private:
         // Private Properties
         uint8_t m_errorI2C;
-        // Experimental - separate from bitwise
-        // Byte - Word Properties
         // AVR-LSB Word Order bit15, bit14, ... , bit1, bit0.
         uint16_t b_wordIN;
         uint16_t b_wordOUT;
@@ -69,10 +64,8 @@ namespace dsg
         uint8_t b_byteLo;
 
         // Private Methods
-        void m_receive();
         String m_errorMessageI2C();
         void m_scanningI2C(uint8_t deviceAddress);
-        // Byte - Word privatemethods
         void b_setHiByte();
         void b_setLoByte();
         void b_glueBytes();

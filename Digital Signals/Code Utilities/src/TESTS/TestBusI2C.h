@@ -26,4 +26,34 @@
 
 // Pending
 
+void BusI2C_T1_BytesWordOperations()
+{
+    printTitle("BusI2C T1 Bytes Word Operations");
+
+    dsg::BusI2C bus = dsg::BusI2C();
+    uint16_t word = 5678;
+
+    bus.WordToBytes(word);
+    Serial.print("word: ");
+    Serial.println(word);
+
+    uint8_t hi = bus.GetHiByte();
+    Serial.print("hi-byte: ");
+    Serial.println(hi);
+
+    uint8_t lo = bus.GetLoByte();
+    Serial.print("lo-byte: ");
+    Serial.println(lo);
+
+    word = bus.BytesToWord();
+    Serial.print("combine implicitly to word: ");
+    Serial.println(word);
+
+    word = bus.BytesToWord(hi, lo);
+    Serial.print("combine explicitly to word: ");
+    Serial.println(word);
+}
+
+
+
 #endif

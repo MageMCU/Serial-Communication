@@ -25,6 +25,7 @@
 #ifndef DSG_PWM_h
 #define DSG_PWM_h
 
+// IN DEVELOMENT ------------------------------- FIXME
 namespace dsg
 {
     template <typename real>

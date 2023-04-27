@@ -29,6 +29,8 @@
 #ifndef Digital_Signals_Test_PWM_h
 #define Digital_Signals_Test_PWM_h
 
+// Test PWM requires Arduino loop() function...
+
 const int GeneratorPWM = 3;
 // Pin 3 ~ Frequency 492Hz *
 // Pin 5 ~ Frequency 981Hx *

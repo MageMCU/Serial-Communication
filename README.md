@@ -2,6 +2,10 @@
 
 - Communication within embedded circuits and devices is an efficient method to exchange data. The communication protocols like I2C and SPI, UART use a physical circuit... Other digital signals considered include Pulse Width Modulation (PWM)...
 
+## Code Utilities
+- **BusI2C.h** under development...
+- **PWM.h** presently being used as PWM-meter. 
+
 ## Devices ##
 - MCU
     - Master-MCU communication ***I2C Address 0x14***
@@ -56,7 +60,7 @@
 
 ## In Development
 
-- 20230423
+- 20230427
 
 ## NOTICE
 
