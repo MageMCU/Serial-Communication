@@ -22,6 +22,11 @@
             - **Adafruit_I2CRegister.h** (See note...)
             - **Adafruit_SPIDevice.h** (See note...)
     - **Example Code** Visit Github website...
+- **LSM303D**
+    - **Source:** Pololu, ***Pololu LSM303D*** (MIT License)[(Github)](https://github.com/pololu/lsm303-arduino)
+    - **Files** 
+        - **LSM303.h**
+        - **LSM303.cpp**
 ## Note
 - The code implementation from the sources is part of the header file. There is no cpp-file. Therefore the altered header files are located here under their appropriate folders.
 - The code from the sources seems to perform well enough until further testing. 

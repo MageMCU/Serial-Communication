@@ -39,12 +39,23 @@
             - Device: Adafruit LIS2MDL Triple Axis Magnetometer
             - Code: Adafruit Industries
                 - **20230411** Code **FAILED** the Magnetometer Accuracy Test. There was no indication how to use the calibration code with the compass code... It was not clear whether the *offsets* and the *magnetic declination* were needed in the compass code... Tested by Carpenter Software. 
+    - **LSM303D**  communication ***I2C Address 0x1E***
+        - STMicroelectronics
+            - Device: Pololu LSM303D (2127) 3D Compass and Accelerometer
+            - Code: Pololu.com Arduino
+                - **20230505** Code **PASSED** the Magnetometer Accuracy Test when using the *offsets* and *magnetic declination*. Magnetic North was off by 30 degrees but this could be corrected... Tested by Carpenter Software.
+    - **LSM303AGR**  communication ***I2C Address 0x1E***
+        - STMicroelectronics
+            - Device: Adafruit LSM303AGR Accelerometer Magnetometer
+            - Code: Adafruit Industries
+                - Testing **Pending**
     - **Magnetometer Accuracy Test**
         - The *heading* (reading) is performed on the xy-plane while rotating the magnetometer. 
-            - (1) **Test** whether the electronic compass aligns with the Earth's Magnetic North giving a *heading* of zero or 360 degrees where the results may rock back and forth between these values.... Use your smart phone to display the Earth's Magnetic North (*Disable True North*).
-            - (2) Rotate the electronic compass around 180 degrees (or pi radians) from its initial orientation of zero degrees. The result at each point at 180 degrees apart (points on a striaght line) should match the headings.  **Test** whether the *heading* is reading about the same result of 180 degrees (or pi radians)...
-        - To clarify, the heading is defined by taking the arc-tangent(y, x) of the xy-plane of the magnetometer... The code testing **FAILS** if the orientations do not align exactly on their opposite sides while rotating the magnetometer to the assigned readings of zero and 180 degrees. In other words, the relative readings should match the physical orientations of the two points. The **difference** of the **physical** orientations between *angle-1* and *angle-2* should match exactly to the **difference** readings of *heading-1* and *heading-2*. 
-            - Thus the **difference** = (*angle-2* **-** *angle-1*) = (*heading-2* **-** *heading-1*). The importance of understanding how to apply the physical angles to the magnetometer's readings is key.
+            - (1) Aim the electronic compass to align with the Earth's Magnetic North giving a *heading* of zero degrees... This is considered the first reading at zero degrees...
+            - (2) Orient the electronic compass 180 degrees (or pi radians) around from the first reading. The reading (result) at this point should match the physical orientation of the compass which should be 180 degrees. Both the reading and orientation should be equal.
+        - To clarify, the heading is defined by taking the arc-tangent(y, x) of the xy-plane of the magnetometer... The code testing **FAILS** if the orientations do not align exactly on their opposite sides after each reading. In other words, the relative readings should match the physical orientations at the two points. The **difference** of the **physical** orientations between *angle-1* and *angle-2* should match exactly to the **difference** readings of *heading-1* and *heading-2*. 
+            - Thus the **difference** = (*angle-2* **-** *angle-1*) = (*heading-2* **-** *heading-1*). The importance of understanding how to apply the magnetometer's readings to the the physical orientation of the compass is key.
+    - **Test** two magnetometers having the same I2C address while using two MCUs. Interesting thought... See *MCU* under the folder *Devices* at this repository.
 
 ## Testing Platform
 
@@ -60,15 +71,9 @@
 
 ## In Development
 
-- 20230427
+- 20230505
 
 ## NOTICE
-
-- MCU Communication (Difficulty Level Intermediate)
-- Please read notes... The **Communication** repository has consolidated other repositories which has included the those deleted below:
-    - **HMC5883L** repository deleted...
-    - **LSM303** repository deleted...
-    - **Servomotor** repository deleted...
 
 ## Disclaimer and Terms
 
