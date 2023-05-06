@@ -1,15 +1,13 @@
-# Adafruit_LIS2MDL
-- ***namespace ada pending...***
+# Pololu LSM303D
 ## ***include folder***
-- **Adafruit_LIS2MDL.h** 
-    - There are dependencies... See README.md in previous folder...
+- **LSM303.h** 
 ## ***src folder***
 - Calibration
     - main.cpp
 - Compass
     - main.cpp
-- MagSensor
-    - main.cpp
+- XCPP
+    - LSM303.cpp
 ## ***root folder***
 - platformio.ini
 
