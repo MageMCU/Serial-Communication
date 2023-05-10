@@ -31,7 +31,7 @@ Adafruit_LIS2MDL mag = Adafruit_LIS2MDL(12345);
 
 float XAxis;
 float YAxis;
-float ZAxis;
+// float ZAxis;
 
 float heading;
 float declinationAngle;
@@ -65,7 +65,7 @@ void loop(void)
     // For offsets, use opposite sign (-/+)
     XAxis = (float)(mag.raw.x + 17);
     YAxis = (float)(mag.raw.y + 221);
-    ZAxis = (float)(mag.raw.z + 83);
+    // ZAxis = (float)(mag.raw.z + 83);
 
     // Calculate the angle of the vector y,x (Degrees)
     heading = atan2(YAxis, XAxis) * RAD_TO_DEG;
