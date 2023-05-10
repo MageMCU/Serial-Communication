@@ -6,4 +6,4 @@
 <p>20230425 MCU I2C communicaton between 2 Arduino Unos - updated ...</p>
 <p>20230426 Code Utilities updated ...</p>
 <p>20230505 Added LSM303D ...</p>
-<p>20230509 Rewrote LIS2MDL Calibration and Compass code within sec folder...</p>
+<p>20230509 Rewrote LIS2MDL Calibration and Compass code within src folder...</p>
