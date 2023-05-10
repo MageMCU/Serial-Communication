@@ -67,7 +67,7 @@ void loop(void)
     YAxis = (float)(mag.raw.y + 221);
     // ZAxis = (float)(mag.raw.z + 83);
 
-    // Calculate the angle of the vector y,x (Degrees)
+    // Calculate the angle of the arctangent(y,x) (Degrees)
     heading = atan2(YAxis, XAxis) * RAD_TO_DEG;
 
     // Declination (Degrees)
