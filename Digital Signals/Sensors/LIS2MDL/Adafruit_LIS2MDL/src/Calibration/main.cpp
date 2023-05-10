@@ -1,53 +1,111 @@
+//
+// Carpenter Software
+// File: Calibration: main.cpp
+//
+// Purpose: Public Github Account - MageMCU
+// Repository: Communication 
+// Date Created: 20230219
+// Folder: I2C Bus
+//
+// Author: Jesse Carpenter (carpentersoftware.com)
+// Email:carpenterhesse@gmail.com
+//
+// Testing Platform:
+//  * MCU:Atmega328P
+//  * Editor: VSCode
+//  * VSCode Extension: Microsoft C/C++ IntelliSense, debugging, and code browsing.
+//  * VSCode Extension:PlatformIO
+// 
+// Revised Header-Comment 20230219
+//
+// MIT LICENSE
+//
+
 #include <Arduino.h>
 
-#include <Wire.h>
-#include <Adafruit_Sensor.h>
 #include <Adafruit_LIS2MDL.h>
+#include <Adafruit_Sensor.h>
+#include <Wire.h>
 
+/* Assign a unique ID to this sensor at the same time */
+Adafruit_LIS2MDL lis2mdl = Adafruit_LIS2MDL(12345);
 
-Adafruit_LIS2MDL mag = Adafruit_LIS2MDL(12345);
-
-float MagMinX, MagMaxX;
-float MagMinY, MagMaxY;
-float MagMinZ, MagMaxZ;
-
-long lastDisplayTime;
+int RawX, RawMinX, RawMaxX, RawOffsetX = 0;
+int RawY, RawMinY, RawMaxY, RawOffsetY = 0;
+int RawZ, RawMinZ, RawMaxZ, RawOffsetZ = 0;
 
 void setup(void)
 {
-  Serial.begin(9600);
-  Serial.println("LIS2MDL Calibration"); Serial.println("");
+    Serial.begin(9600);
+    while (!Serial)
+    {
+    }
 
-  /* Initialise the magnetometer */
-  if(!mag.begin())
-  {
-    /* There was a problem detecting the LIS2MDL ... check your connections */
-    Serial.println("Ooops, no LIS2MDL detected ... Check your wiring!");
-    while(1);
-  }
-  lastDisplayTime = millis();
+    // Using I2C
+
+    // Enable auto-gain
+    lis2mdl.enableAutoRange(true);
+
+    // Initialise the sensor
+    lis2mdl.begin();
+
+    // Display some basic information on this sensor
+    lis2mdl.printSensorDetails();
 }
 
+int counter = 0;
 void loop(void)
 {
-  /* Get a new sensor event */
-  sensors_event_t magEvent;
+    // Get a new sensor event
+    sensors_event_t event;
+    lis2mdl.getEvent(&event);
 
-  mag.getEvent(&magEvent);
+    // X
+    RawX = lis2mdl.raw.x;
+    if (RawX < RawMinX)
+        RawMinX = RawX;
+    if (RawX > RawMaxX)
+        RawMaxX = RawX;
+    RawOffsetX = (RawMinX + RawMaxX) / 2;
 
-  if (magEvent.magnetic.x < MagMinX) MagMinX = magEvent.magnetic.x;
-  if (magEvent.magnetic.x > MagMaxX) MagMaxX = magEvent.magnetic.x;
+    // Y
+    RawY = lis2mdl.raw.y;
+    if (RawY < RawMinY)
+        RawMinY = RawY;
+    if (RawY > RawMaxY)
+        RawMaxY = RawY;
+    RawOffsetY = (RawMinY + RawMaxY) / 2;
 
-  if (magEvent.magnetic.y < MagMinY) MagMinY = magEvent.magnetic.y;
-  if (magEvent.magnetic.y > MagMaxY) MagMaxY = magEvent.magnetic.y;
+    // Z
+    RawZ = lis2mdl.raw.z;
+    if (RawZ < RawMinZ)
+        RawMinZ = RawZ;
+    if (RawZ > RawMaxZ)
+        RawMaxZ = RawZ;
+    RawOffsetZ = (RawMinZ + RawMaxZ) / 2;
 
-  if (magEvent.magnetic.z < MagMinZ) MagMinZ = magEvent.magnetic.z;
-  if (magEvent.magnetic.z > MagMaxZ) MagMaxZ = magEvent.magnetic.z;
+    // Print Offsets
+    // Rotate LIS2MDL in all three planes...
+    // xy-plane
+    // yz-plane
+    // zx-plane
+    // UNTIL the offset data no longer changes...
 
-  if ((millis() - lastDisplayTime) > 1000)  // display once/second
-  {
-    Serial.print("Mag Minimums: "); Serial.print(MagMinX); Serial.print("  ");Serial.print(MagMinY); Serial.print("  "); Serial.print(MagMinZ); Serial.println();
-    Serial.print("Mag Maximums: "); Serial.print(MagMaxX); Serial.print("  ");Serial.print(MagMaxY); Serial.print("  "); Serial.print(MagMaxZ); Serial.println(); Serial.println();
-    lastDisplayTime = millis();
-  }
+    if (counter > 100)
+    {
+        Serial.print(RawOffsetX);
+        Serial.print(", ");
+        Serial.print(RawOffsetY);
+        Serial.print(", ");
+        Serial.print(RawOffsetZ);
+        Serial.println();
+        counter = 0;
+    }
+
+    // Increment Counter
+    counter++;
+
+    // Delay before the next sample
+    delay(100);
 }
+
