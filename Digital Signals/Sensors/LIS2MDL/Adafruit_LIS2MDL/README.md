@@ -8,8 +8,8 @@
     - main.cpp
 - Compass
     - main.cpp
-- MagSensor
-    - main.cpp
+- MagSensor ---------------- REMOVED 
+    - main.cpp ------------- REMOVED
 ## ***root folder***
 - platformio.ini
 
