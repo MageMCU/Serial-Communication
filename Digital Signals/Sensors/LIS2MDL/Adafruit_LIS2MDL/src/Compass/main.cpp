@@ -77,7 +77,7 @@ void loop(void)
     // Formula: (deg + (min / 60.0)) / (180 / M_PI);
     // This is author's location...
     // Albuquerque, NM, USA 
-    declinationAngle = (8.0 + (3.0 / 60.0));
+    declinationAngle = 8.0 + (3.0 / 60.0);
     heading += declinationAngle;
 
     // Normalize to 0-360
