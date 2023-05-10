@@ -74,7 +74,7 @@ void loop(void)
     // You can find your declination...
     // SOURCE: https://www.magnetic-declination.com/
     // (+) Positive or (-) for negative
-    // Formula: (deg + (min / 60.0)) / (180 / M_PI);
+    // Formula: (deg + (min / 60.0)); // * DEG_TO_RAD;
     // This is author's location...
     // Albuquerque, NM, USA 
     declinationAngle = 8.0 + (3.0 / 60.0);
