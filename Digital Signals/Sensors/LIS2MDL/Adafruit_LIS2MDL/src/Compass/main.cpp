@@ -68,7 +68,7 @@ void loop(void)
     ZAxis = (float)(mag.raw.z + 83);
 
     // Calculate the angle of the vector y,x (Degrees)
-    heading = (atan2(YAxis, XAxis)) * RAD_TO_DEG;
+    heading = atan2(YAxis, XAxis) * RAD_TO_DEG;
 
     // Declination (Degrees)
     // You can find your declination...
