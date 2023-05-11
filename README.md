@@ -39,6 +39,7 @@
             - Device: Adafruit LIS2MDL Triple Axis Magnetometer
             - Code: Adafruit Industries
                 - **20230509** Code **PASSED** the Magnetometer Accuracy Test. Carpenter Software **rewrote** the Calibration and Compass code in the src folder. Did a data review using comma separated values (CSV) and plotted the data. The data will be posted here... Tested by Carpenter Software. 
+            - **Compass Study** discusses why the programming changes were made to the Calibration and Compass code. The format is downloadable PDF file. The supporting data files are also included.
     - **LSM303D**  communication ***I2C Address 0x1E***
         - STMicroelectronics
             - Device: Pololu LSM303D (2127) 3D Compass and Accelerometer
