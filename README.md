@@ -19,12 +19,12 @@
         - NXP Semiconductors
             - Device: Adafruit PCA9685 16-Channel Servo Driver
             - Code: Adafruit Industries
-                - **20230404** Code **PASSED** using the following steps...
-                    - (1) Arduino Uno self-test - TEST_STEP_1().
-                    - (2) Adafruit driver to Arduino Input - TEST_STEP_2().
-                    - (3) Adafruit Calibration - TEST_STEP_3().
-                    - (4) Mapping Servo Motor - TEST_STEP_4().
-                - The last three tests used Adafruit's code...
+                - **20230511** Code **updated** using the following src folders...
+                    - (1) s1_SelfTest - Arduino Uno self-test.
+                    - (2) s2_DriverTest - Adafruit driver to Arduino Input.
+                    - (3) s3_Servo - Servo Calibration.
+                    - (4) s4_MapServo - Mapping Servo Motor.
+                - Removed defines and moved steps into their own folder to improve the code's readability... Use platformio.ini to activate a folder...
 
 ## Sensors ##
 
@@ -72,7 +72,7 @@
 
 ## In Development
 
-- 20230509
+- 20230511
 
 ## NOTICE
 

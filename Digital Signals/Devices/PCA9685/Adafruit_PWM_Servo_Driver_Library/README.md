@@ -12,12 +12,21 @@
     - (file located at the Numerics repository)
 - **Statistics.h**         
     - (file located at the Numerics repository)
+- **TestSetup.h**
+    - Common properties used throughout the testing...
 - **Timer.h**               
     - (file located at the Numerics repository)
 
 ## ***src folder***
 
-- main.cpp
+- s1_SelfTest
+    - main.cpp
+- s2_DriverTest
+    - main.cpp
+- s3_Servo
+    - main.cpp
+- s4_MapServo
+    - main.cpp
 
 ## ***root folder***
 
