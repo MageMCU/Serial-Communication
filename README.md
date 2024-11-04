@@ -10,8 +10,12 @@
 - **Raspberry Pi** all models - NEW
   - Raspberry Pi 3 Model v1.2 (2015) with 1GB RAM (minimum hardware setup)
 ### Configurations
+-pending
+## In Development
+- 20241104
 ___
 ### Was titled as Communication Repository
+___
 
 - Communication within embedded circuits and devices is an efficient method to exchange data. The communication protocols like I2C and SPI, UART use a physical circuit... Other digital signals considered include Pulse Width Modulation (PWM)...
 
@@ -78,14 +82,6 @@ ___
 - **PlatformIO** is a cross-platform, cross-architecture, multiple framework, professional tool for embedded systems engineers and for software developers who write applications for embedded products. 
 
 - **Visual Studio Code** is a streamlined code editor and it runs on macOS, Linux, and Windows. The best thing about VSCode, it is free.
-
-## Issues
-
-- None
-
-## In Development
-
-- 20230511
 
 ## NOTICE
 
