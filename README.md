@@ -12,9 +12,12 @@
 ### Configurations
 -pending
 ## In Development
-- 20241104
+- 20241104 - This repository is undergoing REVIEW
+
+___
 ___
 ### Was titled as Communication Repository
+___
 ___
 
 - Communication within embedded circuits and devices is an efficient method to exchange data. The communication protocols like I2C and SPI, UART use a physical circuit... Other digital signals considered include Pulse Width Modulation (PWM)...
