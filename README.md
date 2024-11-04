@@ -1,4 +1,17 @@
-# Communication Repository
+## Serial Communication
+- Serial communication uses *protocols* to transfer data between devices or components. A *protocol* is a method for transmitting data in a sequential manner, one bit at a time. It is a set of formal rules describing how to transmit or exchange data. A list of generic protocols are listed below:
+  - **UART** -  Universal Asynchronous Receiver Transmitter, a commonly used protocol that allows asynchronous data exchange between devices. It uses two wires and operates at speeds ranging from 300 bps to 25 Mbps.
+  - **I2C** - An Inter-Integrated Circuit protocol that uses two wires to transmit data between devices. It's ideal for sensors and modules.
+  - **SPI** - A Serial Peripheral Interface protocol that uses a master-slave architecture to operate in full duplex mode. It's used for short distance communication in embedded systems.
+  - **USB** - A Universal Serial Bus protocol that ...
+### Platform
+- **Arduino Uno** Rev3
+  - The MCU chip **Atmega328P**...
+- **Raspberry Pi** all models - NEW
+  - Raspberry Pi 3 Model v1.2 (2015) with 1GB RAM (minimum hardware setup)
+### Configurations
+___
+### Was titled as Communication Repository
 
 - Communication within embedded circuits and devices is an efficient method to exchange data. The communication protocols like I2C and SPI, UART use a physical circuit... Other digital signals considered include Pulse Width Modulation (PWM)...
 
