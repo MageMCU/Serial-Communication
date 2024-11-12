@@ -1,7 +1,7 @@
 ## Serial Communication
 
 ### I2C - Under Review
-### SPI - pemding
+### SPI - pending
 ### UART - pending
 ### USB - pending
 
